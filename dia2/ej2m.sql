@@ -25,7 +25,7 @@ SELECT * FROM autor;
 SELECT Nombre, Edad FROM estudiante;
 
 /* 3 */
-SELECT Nombre, ApellidoFROM estudiante WHERE Carrera = 'Informática';
+SELECT Nombre, Apellido FROM estudiante WHERE Carrera = 'Informática';
 
 /* 4 */
 SELECT Nombre FROM autor WHERE Nacionalidad = 'Francesa' OR Nacionalidad = 'Italiana';
