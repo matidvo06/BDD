@@ -55,30 +55,34 @@ WHERE id = 1;
 
 /* 5 */
 CREATE TEMPORARY TABLE tmp_movies AS SELECT * FROM movies;
-DELETE FROM tmp_movies WHERE awards < 5;
 
 /* 6 */
+DELETE FROM tmp_movies WHERE awards < 5;
+
+/* 7 */
 SELECT genres.name
 FROM genres
 INNER JOIN movies ON genres.id = movies.genre_id
 GROUP BY genres.id
 HAVING COUNT(*) >= 1;
 
-/* 7 */
+/* 8 */
 SELECT actors.first_name, actors.last_name
 FROM actors
 INNER JOIN movies ON actors.favorite_movie_id = movies.id
 WHERE movies.awards > 3;
 
-/* 8 */
+/* 9 */
 CREATE INDEX idx_title ON movies (title);
+
+/* 10 */
 SHOW INDEXES FROM movies;
 
-/* 9 
+/* 11 
 En esta BDD se podrían crear índices en la tabla MOVIES para acelerar la búsqueda de películas por título o por género_id. Además, podría ser útil crear
 un índice en la tabla ACTORS para acelerar la búsqueda de actores por nombre o favorite_movie_id.
 
-10
+12
 Depende de las necesidades específicas de cada aplicación y de las consultas más frecuentes. Por ej: si se realizan consultas frecuentes para buscar 
 episodios de una temporada en particular, se podría considerar la creación de un índice en la tabla EPISODES para acelerar estas consultas.
 */
