@@ -20,7 +20,7 @@ Tomando la base de datos movies_db.sql, se solicita:
 */
 
 /*Crear la tabla con lo requerido*/
-CREATE TEMPORARY TABLE TWD
+CREATE TEMPORARY TABLE TWD AS
 SELECT e.*
 FROM episodes e
 INNER JOIN seasons s ON e.season_id = s.id
