@@ -1,0 +1,19 @@
+Luego de un análisis realizado en un sistema de facturación, se ha detectado un mal diseño en la base de datos. La misma, cuenta con una tabla facturas 
+que almacena datos de diferente naturaleza. 
+Como se puede observar, la tabla cuenta con datos que podrían ser normalizados y separados en diferentes entidades.
+FACTURAS: id_factura INT (PK), fecha_factura DATE, forma_pago DECIMAL, IVA DECIMAL, cantidad INT, importe DECIMAL, nombre_cliente VARCHAR, 
+apellido_cliente VARCHAR, direccion_cliente VARCHAR, descripcion_articulo VARCHAR
+Ejercicio 
+Se solicita para el escenario anterior: 
+Aplicar reglas de normalización y elaborar un modelo de DER que alcance la tercera forma normal (3FN).
+Describir con sus palabras cada paso de la descomposición y aplicación de las reglas para visualizar el planteo realizado.
+
+SOLUCIÓN:
+Para aplicar estas reglas a la tabla "facturas", podemos identificar varias entidades que pueden separarse en diferentes tablas. Por ejemplo, podemos crear
+una tabla "clientes" para almacenar la información de cada cliente, una tabla "artículos" para almacenar información sobre cada artículo vendido y una 
+tabla "facturas" que solo contenga la información de la fecha de factura, la forma de pago y el impuesto de cada factura.
+La tabla "clientes" tendría una clave principal "id_cliente" y campos como "nombre", "apellido" y "dirección". La tabla "artículos" tendría una clave 
+principal "id_artículo" y campos como "descripción" e "importe". Por último, la tabla "facturas" tendría una clave principal "id_factura" y campos 
+como "cantidad" y "importe_total". También tendría claves foráneas que apuntan a la tabla "clientes" y la tabla "artículos".
+De esta manera, se cumple con las reglas de la tercera forma normal y se ha optimizado el diseño de la base de datos eliminando redundancias y separando 
+los datos en entidades más coherentes.
