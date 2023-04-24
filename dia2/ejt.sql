@@ -33,7 +33,8 @@ FROM TWD
 WHERE season_id = (SELECT id FROM seasons WHERE number = 1 AND serie_id = (SELECT id FROM series WHERE title = 'The Walking Dead'));
 
 /*Crear índice en movies*/
-CREATE INDEX ejemplo_idx ON movies (column1, column2);
+CREATE INDEX genre_index ON movies (genre_id);
+SHOW INDEXES FROM movies;
 
 /* 1 */
 INSERT INTO movies (title, rating, awards, release_date, length, genre_id)
