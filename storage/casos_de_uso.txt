@@ -1,0 +1,49 @@
+EJ 1
+Tengo que crear una aplicación que se encarga de manejar la gestión de dinero en cuenta de los usuarios de Mercado Pago. Cuando un usuario paga, luego de 
+validar que tiene saldo, tengo que registrar el pago y decrementar su saldo. Cuando un usuario deposita dinero, tengo que incrementar su saldo. Asimismo, 
+con cada pago aprobado, y usando los valores del pago y el usuario varias aplicaciones de fraude calculan modelos de riesgo de los usuarios.
+Desde una perspectiva de Base de Datos, ¿qué utilizarías? ¿Por qué? ¿Se te ocurre más de una forma de hacerlo?
+RESPUESTA:
+Para manejar la gestión de dinero en cuenta de los usuarios de Mercado Pago, se necesitaría una base de datos confiable y eficiente. Una opción podría ser 
+utilizar una base de datos relacional como MySQL o PostgreSQL, ya que son altamente confiables y escalables. Sin embargo, también podría considerarse el 
+uso de una base de datos no relacional como MongoDB, especialmente si se espera que la aplicación maneje una gran cantidad de datos y necesite una alta 
+velocidad de lectura y escritura.
+En términos de diseño de la base de datos, podría crearse una tabla "usuarios" que almacene la información de cada usuario, incluyendo su saldo actual. 
+Además, se necesitaría una tabla "transacciones" que registre cada pago y depósito realizado por cada usuario, con detalles como la fecha, el monto y el 
+tipo de transacción. Para el cálculo de los modelos de riesgo de los usuarios, se podría utilizar una tabla adicional "riesgo" que almacene información 
+relevante para el cálculo del modelo, como los montos promedio de pago y depósito de cada usuario.
+Otra forma de abordar esto sería utilizar una base de datos orientada a grafos como Neo4j, lo que permitiría modelar las relaciones entre los usuarios y 
+las transacciones en un grafo y hacer consultas más complejas en tiempo real. Sin embargo, esto podría ser más complejo de implementar y puede no ser 
+necesario en este caso específico.
+En resumen, para manejar la gestión de dinero en cuenta de los usuarios de Mercado Pago se podrían utilizar una variedad de soluciones de base de datos, 
+incluyendo bases de datos relacionales y no relacionales, dependiendo de los requerimientos específicos de la aplicación y la cantidad de datos que se 
+espera manejar.
+
+
+EJ 2
+Tengo que crear una aplicación que guarda datos de envíos
+Para cada envío tengo que guardar algunos datos clave como shippingId, comprador, vendedor, producto, costo total, transportista y ruta
+Asimismo, asociado con eso, se debe guardar una foto de la orden de envío. Usualmente el equipo accede a esta data por el shippingId.
+Además de esto, necesitan obtener en ocasiones informaciones sobre los envíos para un comprador o vendedor en particular y agrupar por ellos el costo 
+total generado.
+Finalmente, por cuestiones regulatorias, deben saber hasta por 10 años por que ruta se envió un producto.
+Desde una perspectiva de Base de Datos, ¿qué utilizarías? ¿Por qué? ¿Se te ocurre más de una forma de hacerlo?
+RESPUESTA
+Para manejar los datos de envío, se podría utilizar una base de datos relacional como MySQL o PostgreSQL, ya que es posible estructurar los datos en 
+tablas y relacionarlas de manera eficiente.
+En términos de diseño de la base de datos, se podría crear una tabla "envios" que almacene los datos clave de cada envío, incluyendo shippingId, 
+comprador, vendedor, producto, costo total, transportista y ruta. Además, se necesitaría una tabla "fotos_envios" para almacenar las fotos de las órdenes 
+de envío, relacionándolas con su envío correspondiente por medio de una clave foránea.
+Para obtener información sobre los envíos de un comprador o vendedor en particular, se podría utilizar una consulta SQL que filtre los envíos según el 
+comprador o vendedor deseado y, a través de una operación de agregación, sume los costos totales generados por cada envío. Por otro lado, para cumplir 
+con los requisitos regulatorios, se podría agregar un campo "fecha_envio" a la tabla de envíos y utilizarlo para buscar envíos realizados en una fecha 
+específica o dentro de un rango de fechas.
+Otra forma de abordar esto podría ser utilizar una base de datos no relacional como MongoDB, lo que permitiría una mayor flexibilidad en la estructura 
+de los datos y podría ser más escalable en caso de manejar grandes cantidades de información. Sin embargo, el diseño de la base de datos podría ser más 
+complejo en este caso.
+En resumen, para manejar los datos de envío se podrían utilizar diferentes soluciones de base de datos, dependiendo de los requerimientos específicos de 
+la aplicación y la cantidad de datos que se espera manejar. En general, una base de datos relacional como MySQL o PostgreSQL sería una opción adecuada 
+para este caso, ya que permite estructurar los datos de manera eficiente y realizar consultas complejas cuando sea necesario
+
+
+
